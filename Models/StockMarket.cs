@@ -1,7 +1,10 @@
-﻿namespace StockMarketApp.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace StockMarketApp.Models
 {
     public class StockMarket
     {
+        [Key]
         public int Id { get; set; }
         public DateOnly Date { get; set; }  
         public string Trade_Code {  get; set; }

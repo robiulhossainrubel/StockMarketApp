@@ -105,7 +105,7 @@ function separateByName(arr,tc) {
 }
 function fetchData() {
     return $.ajax({
-        url: '/Json/GetAll',
+        url: '/Sql/GetAll',
         method: 'GET',
         dataType: 'json'
     });

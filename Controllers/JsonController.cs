@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Bulky.DataAccess.Repository.IRepository;
+using Microsoft.AspNetCore.Mvc;
 using StockMarketApp.Models;
 using StockMarketApp.Utlity;
 using System;
@@ -7,6 +8,11 @@ namespace StockMarketApp.Controllers
 {
     public class JsonController : Controller
     {
+        private readonly IUnitOfWork _unitOfWork;
+        public JsonController(IUnitOfWork unitOfWork)
+        { 
+            _unitOfWork = unitOfWork;
+        }
         public IActionResult Index()
         {
             return View();
@@ -104,7 +110,7 @@ namespace StockMarketApp.Controllers
         public IActionResult GetAll()
         {
             List<StockMarket> ObjList = JsonHelper.ReadFromJsonFile<StockMarket>();
-
+            
             return Json(new { data = ObjList });
         }
         [HttpDelete]
