@@ -1,0 +1,85 @@
+﻿@model StockMarket
+
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">@(Model.Id != 0 ? "Update" : "Create") Stock</h2>
+                <hr />
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <form method="post" class="row" enctype="multipart/form-data">
+            <input asp-for="Id" type="hidden" />
+            <div class="row">
+                <div class="col-12">
+                    <div class="border p-3">
+                        <div asp-validation-summary="ModelOnly"></div>
+                        <div class="form-floating py-2 col-12">
+                            <input asp-for="Date" type="date" class="form-control border-0 shadow" />
+                            <label asp-for="Date" class="ms-2">Date</label>
+                            <span asp-validation-for="Date" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating py-2 col-12">
+                            <input asp-for="Trade_Code" type="text" class="form-control border-0 shadow" />
+                            <label asp-for="Trade_Code" class="ms-2">Trade Code</label>
+                            <span asp-validation-for="Trade_Code" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating py-2 col-12">
+                            <input asp-for="High" type="text" class="form-control border-0 shadow" />
+                            <label asp-for="High" class="ms-2">High</label>
+                            <span asp-validation-for="High" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating py-2 col-12">
+                            <input asp-for="Low" type="text" class="form-control border-0 shadow" />
+                            <label asp-for="Low" class="ms-2">Low</label>
+                            <span asp-validation-for="Low" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating py-2 col-12">
+                            <input asp-for="Open" type="text" class="form-control border-0 shadow" />
+                            <label asp-for="Open" class="ms-2">Open</label>
+                            <span asp-validation-for="Open" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating py-2 col-12">
+                            <input asp-for="Close" type="text" class="form-control border-0 shadow" />
+                            <label asp-for="Close" class="ms-2">Close</label>
+                            <span asp-validation-for="Close" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating py-2 col-12">
+                            <input asp-for="Volume" type="text" class="form-control border-0 shadow" />
+                            <label asp-for="Volume" class="ms-2">Volume</label>
+                            <span asp-validation-for="Volume" class="text-danger"></span>
+                        </div>
+                        <div class="row m-3">
+                            <div class="col-6 col-md-3">
+                                @if (Model.Id != 0)
+                                {
+                                    <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
+                                }
+                                else
+                                {
+                                    <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+                                }
+
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <a asp-controller="Json" asp-action="Index" class="btn btn-outline-primary border form-control" style="width:150px">
+                                    Back to List
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

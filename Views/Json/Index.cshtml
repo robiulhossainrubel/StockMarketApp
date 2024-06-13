@@ -1,0 +1,40 @@
+﻿
+
+
+<div class="card shadow border-0 mt-4 mb-5">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">Stock List</h2>
+                <hr />
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <div class="row pb-3">
+            <div class="co-6 text-end">
+                <a asp-action="Upsert" class="btn btn-dark">
+                    Create New Stock
+                    <i class="bi bi-plus-circle"></i>
+                </a>
+            </div>
+        </div>
+        <table id="tblData" class="table table-bordered table-striped" style="width:100%;">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Trade Code</th>
+                    <th>High</th>
+                    <th>Low</th>
+                    <th>Open</th>
+                    <th>Colse</th>
+                    <th>Volume</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/js/stockmarket.js"></script>
+}
