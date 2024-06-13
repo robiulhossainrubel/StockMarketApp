@@ -28,41 +28,7 @@ namespace StockMarketApp.Controllers
             JsonHelper.WriteToCountJsonFile(cnt);
             return RedirectToAction("Index");
         }
-        public IActionResult Update(int? id)
-        {
-            var stocks = JsonHelper.ReadFromJsonFile<StockMarket>();
-            var stock = stocks.FirstOrDefault(u => u.Id == id);
-            if (stock == null)
-            {
-                return NotFound();
-            }
-            else
-            {
-                return View(stock);
-            }
-        }
-        [HttpPost]
-        public IActionResult Update(StockMarket updatestock)
-        {
-            var stocks = JsonHelper.ReadFromJsonFile<StockMarket>();
-            var stock = stocks.FirstOrDefault(u => u.Id == updatestock.Id);
-
-            if (ModelState.IsValid && stock != null)
-            {
-                stock.Id = updatestock.Id;
-                stock.Date = updatestock.Date;
-                stock.Trade_Code = updatestock.Trade_Code;
-                stock.High = updatestock.High;
-                stock.Low = updatestock.Low;
-                stock.Open = updatestock.Open;
-                stock.Close = updatestock.Close;
-                stock.Volume = updatestock.Volume;
-
-                JsonHelper.WriteToJsonFile(stocks);
-                TempData["success"] = "Stock Created Successfuly";
-            }
-            return RedirectToAction("Index");
-        }
+        
         public IActionResult Upsert(int? id)
         {
             if (id == null || id ==0)
